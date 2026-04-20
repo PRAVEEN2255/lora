@@ -28,11 +28,17 @@ def attempt_heuristic_fix(payload: str):
     # Extract Lat
     lat_match = re.search(r'"lat"\s*:\s*([\d\.\-]+)', payload)
     if lat_match:
-        fixed_data['lat'] = float(lat_match.group(1))
+        try:
+            fixed_data['lat'] = float(lat_match.group(1))
+        except ValueError:
+            pass
         
     # Extract Lng
     lng_match = re.search(r'"lng"\s*:\s*([\d\.\-]+)', payload)
     if lng_match:
-        fixed_data['lng'] = float(lng_match.group(1))
+        try:
+            fixed_data['lng'] = float(lng_match.group(1))
+        except ValueError:
+            pass
         
     return fixed_data

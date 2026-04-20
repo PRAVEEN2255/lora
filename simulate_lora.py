@@ -4,7 +4,9 @@ import json
 import random
 import math
 
-API_URL = "http://localhost:8000/api/ingest"
+import os
+
+API_URL = os.getenv("API_URL", "http://localhost:8000/api/ingest")
 
 def generate_movement(lat, lng, heading, speed):
     """Simulates linear movement based on heading and speed."""
