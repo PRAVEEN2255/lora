@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anti-Gravity Tactical Dashboard</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="/dashboard_static/style.css" />
+    <!-- High-end futuristic fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Fullscreen Map Background -->
+    <div id="map"></div>
+    
+    <!-- Futuristic HUD Overlay -->
+    <div class="hud-layer">
+        
+        <!-- Top Bar Title -->
+        <header class="glass-panel top-bar">
+            <div class="title-container">
+                <div class="cyber-accent"></div>
+                <div class="glitch-text">Strategic Fusion Engine – LoRa Uplink</div>
+            </div>
+            <div class="system-status">
+                <span class="status-dot pulsing"></span> 
+                <span>SECURE UPLINK ACTIVE</span>
+            </div>
+        </header>
+
+        <!-- Left Intelligence Panel -->
+        <aside class="glass-panel side-panel left-panel">
+            <div class="panel-header">
+                <span class="header-icon">⟡</span> TACTICAL INTELLIGENCE
+            </div>
+            <div id="node-list">
+                <!-- Node cards injected here via JavaScript -->
+                <div class="loading-data">Initializing Telemetry Streams...</div>
+            </div>
+        </aside>
+
+        <!-- Right Panel Toggle Button -->
+        <div class="panel-toggle-btn right-side glass-panel" id="right-toggle-btn" onclick="toggleRightPanel()">
+            <span style="transform: scaleX(-1); display: inline-block;">▶</span>
+        </div>
+
+        <!-- Right Controls & Radar Panel -->
+        <aside class="glass-panel side-panel right-panel" id="right-panel">
+            <div class="panel-header">
+                <span class="header-icon">⚙</span> SYSTEM CONTROLS
+            </div>
+            
+            <div class="control-group">
+                <label class="switch-container">
+                    <input type="checkbox" id="toggle-predicted" checked>
+                    <span class="checkmark"></span>
+                    Show Predicted Data
+                </label>
+                <label class="switch-container">
+                    <input type="checkbox" id="toggle-trails" checked>
+                    <span class="checkmark"></span>
+                    Show Motion Trails
+                </label>
+            </div>
+
+            <div class="panel-header" style="margin-top: 30px;">
+                <span class="header-icon">⌖</span> NODE FOCUS
+            </div>
+            <div class="control-group" id="focus-controls">
+                <button class="focus-btn active" id="btn-unfocus">FREE CAMERA</button>
+                <!-- Focus buttons injected here -->
+            </div>
+
+            <div class="panel-header" style="margin-top: 30px;">
+                <span class="header-icon">◎</span> LOCAL RADAR
+            </div>
+            <div class="radar-container">
+                <div class="radar-sweep"></div>
+                <div class="radar-grid"></div>
+                <div class="radar-center-dot"></div>
+            </div>
+        </aside>
+
+        <!-- Alerts Container (Bottom Center) -->
+        <div id="alerts-container" class="alerts-container"></div>
+    </div>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="/dashboard_static/app.js"></script>
+</body>
+</html>
