@@ -36,8 +36,8 @@ while True:
         state["heading"] += random.uniform(-5, 5)
         
         # Environmental Interference simulation
-        # ~35% chance a packet is fragmented due to terrain dead zones or attenuation
-        is_broken = random.random() < 0.35
+        # ~8% chance a packet is fragmented due to terrain dead zones or attenuation
+        is_broken = random.random() < 0.08
         
         payload = {
             "id": node_id,

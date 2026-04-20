@@ -142,14 +142,22 @@ function showAlert(message, type = 'warning') {
     const icon = type === 'warning' ? '⚠️' : '⚡';
     el.innerHTML = `<span class="alert-icon">${icon}</span> <span>${message}</span>`;
     
-    // Play subtle sound if available (optional)
-    
     alertsContainer.appendChild(el);
+    
+    // Limit to maximum 3 visible alerts to avoid clutter
+    while (alertsContainer.childElementCount > 3) {
+        alertsContainer.removeChild(alertsContainer.firstChild);
+    }
+    
     setTimeout(() => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(20px)';
-        el.style.transition = 'all 0.3s ease';
-        setTimeout(() => el.remove(), 300);
+        if (el.parentNode === alertsContainer) {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'all 0.3s ease';
+            setTimeout(() => {
+                if (el.parentNode === alertsContainer) el.remove();
+            }, 300);
+        }
     }, 4000);
 }
 
